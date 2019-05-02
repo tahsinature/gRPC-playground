@@ -1,0 +1,32 @@
+syntax = "proto3";
+package post;
+
+// service definition
+service PostService {
+  rpc getPosts (AuthorId) returns (PostList);
+  // rpc addPost (PostId) returns (result);
+  rpc removePost (PostId) returns (result);
+}
+
+// message type definition
+message AuthorId {
+  int32 id = 1;
+}
+
+message PostId {
+  int32 id = 1;
+}
+
+message Post {
+  int32 id = 1;
+  string body = 2;
+  int32 authorId = 3;
+}
+
+message PostList {
+  repeated Post posts = 1;
+}
+
+message result {
+  bool status = 1;
+}

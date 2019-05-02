@@ -4,9 +4,6 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const normalizedPath = require('path').join(__dirname, 'routes');
-const grpc = require('grpc');
-
-const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
