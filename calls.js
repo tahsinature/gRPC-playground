@@ -14,7 +14,7 @@ client.list({}, (err, cb) => {
 //   }
 // );
 
-// client.delete({ id: 1 }, (err, cb) => {
+// client.delete({ id: 2 }, (err, cb) => {
 //   if (!err) console.log(cb);
 //   else console.log(err.message);
 // });

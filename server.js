@@ -16,13 +16,15 @@ server.addService(notesProtoService, {
   insert: (_, cb) => {
     const note = _.request;
     notes.push(note);
-    cb(note);
+    cb(null, note);
   },
   delete: (_, cb) => {
     const id = _.request.id;
     const item = notes.find(ele => ele.id === id);
-    notes.splice(notes.indexOf(item), 1);
-    cb(null, { success: true });
+    if (item) {
+      notes.splice(notes.indexOf(item), 1);
+    }
+    cb(null, { success: item ? true : false });
   }
 });
 server.bind('127.0.0.1:50051', grpc.ServerCredentials.createInsecure());
