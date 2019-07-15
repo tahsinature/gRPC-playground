@@ -1,0 +1,25 @@
+syntax = "proto3";
+package Note;
+
+service CommonService {
+  rpc GetAllNotes(Blank) returns (Notes);
+  rpc MakeNote(MakeNotePayload) returns (SuccessResponse);
+  rpc RemoveNote(OnlyId) returns (SuccessResponse);
+  rpc EditNote(EditNotePayload) returns (Note);
+}
+
+message OnlyId { int32 id = 1; }
+
+message Note {
+  int32 id = 1;
+  string body = 2;
+}
+
+message Blank {}
+message Notes { repeated Note notes = 1; }
+message MakeNotePayload { string body = 1; }
+message EditNotePayload {
+  int32 id = 1;
+  string new_body = 2;
+}
+message SuccessResponse { bool success = 1; }
